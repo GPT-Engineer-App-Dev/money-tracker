@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import { Box, Button, FormControl, FormLabel, Input, Select, Table, Thead, Tbody, Tr, Th, Td, IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Link } from "@chakra-ui/react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
+import Hero from "../components/Hero.jsx";
 
 const Index = () => {
+  return (
+    <>
+      <Hero />
+      <Box p={4}>{}</Box>
+    </>
+  );
   const [transactions, setTransactions] = useState([]);
   const [date, setDate] = useState("");
   const [amount, setAmount] = useState("");

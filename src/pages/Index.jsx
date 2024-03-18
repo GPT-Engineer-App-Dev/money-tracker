@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Box, Button, FormControl, FormLabel, Input, Select, Table, Thead, Tbody, Tr, Th, Td, IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter } from "@chakra-ui/react";
+import { Box, Button, FormControl, FormLabel, Input, Select, Table, Thead, Tbody, Tr, Th, Td, IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Link } from "@chakra-ui/react";
 import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
 
 const Index = () => {
@@ -43,11 +43,26 @@ const Index = () => {
     setTransactions(updatedTransactions);
   };
 
+  const handleDownload = () => {
+    const jsonString = JSON.stringify(transactions, null, 2);
+    const blob = new Blob([jsonString], { type: "application/json" });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = "transactions.json";
+    link.click();
+  };
+
   return (
     <Box p={4}>
-      <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={onOpen} mb={4}>
-        Add Transaction
-      </Button>
+      <Box mb={4} display="flex" justifyContent="space-between">
+        <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={onOpen}>
+          Add Transaction
+        </Button>
+        <Button colorScheme="green" onClick={handleDownload}>
+          Download Transactions
+        </Button>
+      </Box>
 
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

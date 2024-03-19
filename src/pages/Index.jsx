@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Box, Button, FormControl, FormLabel, Input, Select, Table, Thead, Tbody, Tr, Th, Td, IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Link } from "@chakra-ui/react";
-import { FaPlus, FaEdit, FaTrash } from "react-icons/fa";
+import { Box, Button, FormControl, FormLabel, Input, Select, Table, Thead, Tbody, Tr, Th, Td, IconButton, useDisclosure, Modal, ModalOverlay, ModalContent, ModalHeader, ModalBody, ModalFooter, Link, Textarea } from "@chakra-ui/react";
+import { FaPlus, FaEdit, FaTrash, FaUpload } from "react-icons/fa";
 
 const Index = () => {
   const [transactions, setTransactions] = useState([]);
@@ -10,6 +10,8 @@ const Index = () => {
   const [category, setCategory] = useState("salary");
   const [editIndex, setEditIndex] = useState(null);
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isOpen: isImportOpen, onOpen: onImportOpen, onClose: onImportClose } = useDisclosure();
+  const [jsonInput, setJsonInput] = useState("");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -59,8 +61,11 @@ const Index = () => {
         <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={onOpen}>
           Add Transaction
         </Button>
-        <Button colorScheme="green" onClick={handleDownload}>
+        <Button colorScheme="green" onClick={handleDownload} mr={2}>
           Download Transactions
+        </Button>
+        <Button leftIcon={<FaUpload />} colorScheme="blue" onClick={onImportOpen}>
+          Import Transactions
         </Button>
       </Box>
 
@@ -100,6 +105,37 @@ const Index = () => {
           </ModalBody>
           <ModalFooter>
             <Button onClick={onClose}>Cancel</Button>
+          </ModalFooter>
+        </ModalContent>
+      </Modal>
+
+      <Modal isOpen={isImportOpen} onClose={onImportClose}>
+        <ModalOverlay />
+        <ModalContent>
+          <ModalHeader>Import Transactions</ModalHeader>
+          <ModalBody>
+            <FormControl>
+              <FormLabel>Paste JSON</FormLabel>
+              <Textarea value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} placeholder="Paste JSON here" />
+            </FormControl>
+          </ModalBody>
+          <ModalFooter>
+            <Button
+              colorScheme="blue"
+              mr={3}
+              onClick={() => {
+                try {
+                  const parsedTransactions = JSON.parse(jsonInput);
+                  setTransactions(parsedTransactions);
+                  onImportClose();
+                } catch (error) {
+                  alert("Invalid JSON");
+                }
+              }}
+            >
+              Import
+            </Button>
+            <Button onClick={onImportClose}>Cancel</Button>
           </ModalFooter>
         </ModalContent>
       </Modal>

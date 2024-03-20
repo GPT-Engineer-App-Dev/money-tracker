@@ -68,7 +68,6 @@ const Index = () => {
           Import sdsdasdas
         </Button>
       </Box>
-
       <Modal isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent>

@@ -59,7 +59,7 @@ const Index = () => {
     <Box p={4}>
       <Box mb={4} display="flex" justifyContent="space-between">
         <Button leftIcon={<FaPlus />} colorScheme="blue" onClick={onOpen}>
-          Add Transactionssssssssss
+          Add Transactionsssssssssssssss
         </Button>
         <Button colorScheme="green" onClick={handleDownload} mr={2}>
           Download Transactions

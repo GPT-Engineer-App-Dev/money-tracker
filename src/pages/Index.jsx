@@ -79,7 +79,7 @@ const Index = () => {
                 <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />
               </FormControl>
               <FormControl mb={4}>
-                <FormLabel>Amount</FormLabel>
+                <FormLabel>AMOUNTSSS</FormLabel>
                 <Input type="number" value={amount} onChange={(e) => setAmount(e.target.value)} required />
               </FormControl>
               <FormControl mb={4}>

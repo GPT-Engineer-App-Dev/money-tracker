@@ -115,7 +115,7 @@ const Index = () => {
           <ModalHeader>Import Transactions</ModalHeader>
           <ModalBody>
             <FormControl>
-              <FormLabel>Paste JSON</FormLabel>
+              <FormLabel>ss JSON</FormLabel>
               <Textarea value={jsonInput} onChange={(e) => setJsonInput(e.target.value)} placeholder="Paste JSON here" />
             </FormControl>
           </ModalBody>

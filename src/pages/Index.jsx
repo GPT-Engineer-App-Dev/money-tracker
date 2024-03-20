@@ -65,7 +65,7 @@ const Index = () => {
           Download Transactions
         </Button>
         <Button leftIcon={<FaUpload />} colorScheme="blue" onClick={onImportOpen}>
-          Import Transactions
+          Import sdsdasdas
         </Button>
       </Box>
 

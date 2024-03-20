@@ -74,7 +74,6 @@ const Index = () => {
           <ModalHeader>{editIndex !== null ? "Edit" : "Add"} Transaction</ModalHeader>
           <ModalBody>
             <form onSubmit={handleSubmit}>
-              
               <FormControl mb={4}>
                 <FormLabel>Date</FormLabel>
                 <Input type="date" value={date} onChange={(e) => setDate(e.target.value)} required />

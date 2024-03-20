@@ -143,7 +143,7 @@ const Index = () => {
       <Table>
         <Thead>
           <Tr>
-            <Th>Date</Th>
+            <Th>Dates</Th>
             <Th>Amount</Th>
             <Th>Type</Th>
             <Th>Category</Th>
